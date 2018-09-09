@@ -1,0 +1,116 @@
+{%load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Unops map</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{% static 'js/plugins/leaflet/leaflet.css'%}">
+    <link href="{% static 'js/plugins/L.Control.Sidebar.css'%}"/>
+    <link href="{% static 'js/plugins/MarkerCluster.css'%}"/>
+
+    <link rel="stylesheet" href="{% static 'src/leaflet.css' %}">
+        <link rel="stylesheet" href="{% static 'src/jquery-ui.min.css' %}">
+        <link rel="stylesheet" href="{% static 'src/css/bootstrap.css' %}">
+         <link rel="stylesheet" href="{% static 'src/css/font-awesome.min.css' %}">
+          <link rel="stylesheet" href="{% static 'src/plugins/leaflet.awesome-markers.css' %}">
+        <link rel="stylesheet" href="{% static 'src/plugins/L.Control.Pan.css' %}">
+        <link rel="stylesheet" href="{% static 'src/plugins/L.Control.Zoomslider.css' %}">
+        <link rel="stylesheet" href="{% static 'src/plugins/L.Control.MousePosition.css' %}">
+        <link rel="stylesheet" href="{% static 'src/plugins/L.Control.Sidebar.css' %}">
+        <link rel="stylesheet" href="{% static 'src/plugins/Leaflet.PolylineMeasure.css' %}">
+
+        <link rel="stylesheet" href="{% static 'src/plugins/easy-button.css' %}">
+        <link rel="stylesheet" href="{% static 'src/plugins/leaflet-opencage/src/css/L.Control.OpenCageSearch.css' %}">
+        <link rel="stylesheet" href="{% static 'src/plugins/leaflet-draw/leaflet.draw.css' %}"/>
+        <link rel="stylesheet" href="{% static 'src/plugins/leaflet-styleeditor/css/Leaflet.StyleEditor.css' %}">
+        <link rel="stylesheet" href="{% static 'src/css/font-awesome.min.css' %}"/>
+        <link rel="stylesheet" href="{% static 'src/plugins/MarkerCluster.Default.css' %}"/>
+        <link rel="stylesheet" href="{% static 'src/plugins/MarkerCluster.css' %}"/>
+    
+</head>
+<body>
+
+    
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="#" style="color:orange">Mapping Mapping</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="#" style="color:orange">Home
+                  <span class="sr-only">(current)</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#" style="color:orange">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/admin" style="color:orange">Admin</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    {% block content %}
+
+    {% endblock %}
+    {% comment %} <script src='https://api.mapbox.com/mapbox-gl-js/v0.46.0/mapbox-gl.js'></script> {% endcomment %}
+    <script src="{% static 'js/jquery.js'%}"></script>
+    <script src="{% static 'js/popper.js'%}"></script>
+    <script src="{% static 'js/bootstrap.js'%}"></script>
+    <script src="{% static 'js/plugins/leaflet/leaflet.js'%}"></script>
+    <script src="{% static 'js/highcharts.js'%}"></script>
+    <script src="{% static 'js/plugins/leaflet.ajax.min.js'%}"></script>
+    <script src="{% static 'js/plugins/L.Control.Sidebar.js'%}"></script>
+    <script src="{% static 'js/plugins/leaflet.markercluster.js'%}"></script> 
+    <script src="{% static 'js/turf.min.js'%}"></script>
+
+
+
+    <script src="{% static 'src/leaflet-src.js' %}"></script>
+
+    <script src="{% static 'src/jquery-3.2.0.min.js' %}"></script>
+    <script src="{% static 'src/leaflet-corridor.js' %}"></script>
+    <script src="{% static 'src/jquery-ui.min.js' %}"></script>
+    <script src="{% static 'src/choropleth.js' %}"></script>
+
+    <script src="{% static 'src/plugins/L.Control.Pan.js' %}"></script>
+    <script src="{% static 'src/plugins/L.Control.Zoomslider.js' %}"></script>
+    <script src="{% static 'src/plugins/L.Control.MousePosition.js' %}"></script>
+    <script src="{% static 'src/plugins/leaflet.awesome-markers.min.js' %}"></script>
+    <script src="{% static 'src/plugins/L.Control.Sidebar.js' %}"></script>
+    <script src="{% static 'src/plugins/Leaflet.PolylineMeasure.js' %}"></script>
+    <script src="{% static 'src/plugins/leaflet.ajax.min.js' %}"></script>
+    <script src="{% static 'src/plugins/leaflet.geometryutil.js' %}"></script>
+     <script src="{% static 'src/turf.min.js' %}"></script>
+    <script src="{% static 'src/plugins/easy-button.js' %}"></script>
+    <script src="{% static 'src/plugins/leaflet-opencage/src/js/L.Control.OpenCageSearch.js' %}"></script>
+    <script src="{% static 'src/plugins/leaflet-providers.js' %}"></script>
+     <script src="{% static 'src/plugins/leaflet-styleeditor/javascript/Leaflet.StyleEditor.js' %}"></script>
+    <script src="{% static 'src/plugins/leaflet-styleeditor/javascript/Leaflet.StyleForms.js' %}"></script>
+
+
+
+
+    <script src="{% static 'src/plugins/leaflet.markercluster.js' %}"></script>
+{% comment %} 
+    <script src="{% static 'js/routing/dist/leaflet-routing-machine.js'%}"></script>
+    <script src="{% static 'js/routing/dist/Control.Geocoder.js'%}"></script>
+    <script src="{% static 'js/routing/dist/config.js'%}"></script>
+
+    {% endcomment %}
+
+    <script src="{% static 'js/map.js'%}"></script>
+    <script src="{% static 'js/AnimatedMarker.js'%}"></script>
+
+
+    
+</body>
+</html>

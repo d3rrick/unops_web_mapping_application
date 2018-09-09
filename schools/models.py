@@ -1,0 +1,121 @@
+from django.db import models
+from django.contrib.gis.db import models as geomodels
+
+
+class PrimarySchool(models.Model):
+    osm_id = models.CharField(max_length=80)
+    addr_distr = models.CharField(max_length=80)
+    addr_count = models.CharField(max_length=80)
+    addr_subco = models.CharField(max_length=80)
+    addr_paris = models.CharField(max_length=80)
+    addr_villa = models.CharField(max_length=80)
+    addr_settl = models.CharField(max_length=80)
+    addr_zone = models.CharField(max_length=80)
+    addr_point = models.CharField(max_length=80)
+    addr_block = models.CharField(max_length=80)
+    name = models.CharField(max_length=80)
+    start_date = models.CharField(max_length=80)
+    amenity = models.CharField(max_length=80)
+    isced_leve = models.CharField(max_length=80)
+    opening_ho = models.CharField(max_length=80)
+    phone = models.CharField(max_length=80)
+    operator = models.CharField(max_length=80)
+    operator_t = models.CharField(max_length=80)
+    social_fac = models.CharField(max_length=80)
+    social_f_1 = models.CharField(max_length=80)
+    temporary = models.CharField(max_length=80)
+    toilets = models.CharField(max_length=80)
+    capacity = models.CharField(max_length=80)
+    staff_coun = models.CharField(max_length=80)
+    generator_field = models.CharField(max_length=80)
+    water_supp = models.CharField(max_length=80)
+    drinking_w = models.CharField(max_length=80)
+    fee = models.CharField(max_length=80)
+    school_typ = models.CharField(max_length=20)
+    latitude = models.FloatField()
+    longitude = models.FloatField()
+    geom = geomodels.MultiPointField(srid=4326)
+
+    def __str__(self):
+        return self.name
+    
+
+
+class SecondarySchool(models.Model):
+    no_field = models.IntegerField()
+    district = models.CharField(max_length=254)
+    settlement = models.CharField(max_length=254)
+    location = models.CharField(max_length=254)
+    name = models.CharField(max_length=254)
+    lat_n = models.FloatField()
+    long_e = models.FloatField()
+    osm_id = models.CharField(max_length=80)
+    addr_distr = models.CharField(max_length=80)
+    addr_count = models.CharField(max_length=80)
+    addr_subco = models.CharField(max_length=80)
+    addr_paris = models.CharField(max_length=80)
+    addr_villa = models.CharField(max_length=80)
+    addr_settl = models.CharField(max_length=80)
+    addr_zone = models.CharField(max_length=80)
+    addr_point = models.CharField(max_length=80)
+    addr_block = models.CharField(max_length=80)
+    start_date = models.CharField(max_length=80)
+    amenity = models.CharField(max_length=80)
+    isced_leve = models.CharField(max_length=80)
+    opening_ho = models.CharField(max_length=80)
+    phone = models.CharField(max_length=80)
+    operator = models.CharField(max_length=80)
+    operator_t = models.CharField(max_length=80)
+    social_fac = models.CharField(max_length=80)
+    social_f_1 = models.CharField(max_length=80)
+    temporary = models.CharField(max_length=80)
+    toilets = models.CharField(max_length=80)
+    capacity = models.CharField(max_length=80)
+    staff_coun = models.CharField(max_length=80)
+    generator_field = models.CharField(max_length=80)
+    water_supp = models.CharField(max_length=80)
+    drinking_w = models.CharField(max_length=80)
+    fee = models.CharField(max_length=80)
+    school_typ = models.CharField(max_length=20)
+    geom = geomodels.MultiPointField(srid=4326)
+
+    def __str__(self):
+        return self.name
+
+
+
+class University(models.Model):
+    osm_id = models.CharField(max_length=80)
+    addr_distr = models.CharField(max_length=80)
+    addr_count = models.CharField(max_length=80)
+    addr_subco = models.CharField(max_length=80)
+    addr_paris = models.CharField(max_length=80)
+    addr_villa = models.CharField(max_length=80)
+    addr_settl = models.CharField(max_length=80)
+    addr_zone = models.CharField(max_length=80)
+    addr_point = models.CharField(max_length=80)
+    addr_block = models.CharField(max_length=80)
+    name = models.CharField(max_length=80)
+    start_date = models.CharField(max_length=80)
+    amenity = models.CharField(max_length=80)
+    isced_leve = models.CharField(max_length=80)
+    opening_ho = models.CharField(max_length=80)
+    phone = models.CharField(max_length=80)
+    operator = models.CharField(max_length=80)
+    operator_t = models.CharField(max_length=80)
+    social_fac = models.CharField(max_length=80)
+    social_f_1 = models.CharField(max_length=80)
+    temporary = models.CharField(max_length=80)
+    toilets = models.CharField(max_length=80)
+    capacity = models.CharField(max_length=80)
+    staff_coun = models.CharField(max_length=80)
+    generator_field = models.CharField(max_length=80)
+    water_supp = models.CharField(max_length=80)
+    drinking_w = models.CharField(max_length=80)
+    fee = models.CharField(max_length=80)
+    school_typ = models.CharField(max_length=20)
+    geom = geomodels.MultiPointField(srid=4326)
+
+    def __str__(self):
+        return self.name
+

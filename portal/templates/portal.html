@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+            #mapdiv {
+                height:90vh;
+            }
+              #divProject{
+                  background-color: beige;
+              }
+               .col-xs-12, .col-xs-6, .col-xs-4{
+                  padding:3px;
+              }
+              .errorMsg{
+                  padding:0;
+                  text-align: center;
+                  background-color: darksalmon;
+              }
+              .btn-default {
+                    background: #0f0f0f;
+                    color: #fff;
+                }
+                img {
+                      position: relative;
+                      top: -3px;
+                      left: -3px;
+                           }
+
+        </style>
+    </head>
+    <body>
+
+        <div id="side-bar" class="col-md-12">
+
+            <div id="divProject" class="col-xs-12">
+                <div id="legend">
+                <h4 class="text-center">toggle legend<i id="btnLinearProjects" class="fa fa-server"></i></h4>
+                <div id="lgndLinearProjectsDetail">
+                      <svg width="100" height="100">
+                          <img src="http://localhost:8000/static/img/legend.png"/>
+                     </svg>
+               </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="mapdiv" class="col-md-12"></div>
+
+{% endblock %}
