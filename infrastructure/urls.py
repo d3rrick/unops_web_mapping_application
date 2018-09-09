@@ -4,7 +4,6 @@ from . import views
 
 urlpatterns = [
     url(r'^api/(?P<name>\w+)/$', views.endpoint),
-    url(r'^api/districts/$', views.districts),
 
 
     
