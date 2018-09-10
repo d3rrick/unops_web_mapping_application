@@ -62,6 +62,7 @@ var university;
 var healthFacilities;
 var lyrMarkerCluster;
 var districts;
+var healthIcn;
 
 
 $(document).ready(function(){
@@ -109,25 +110,27 @@ $(document).ready(function(){
         "Outdoors" : lyrOutdoors,
         "Watercolor" : lyrWaterColor
     };
-
+    // icons
+    healthIcn = L.icon({iconUrl:'http://localhost:8000/static/img/health.svg', iconSize:[40,40], iconAnchor:[20,24]});
     // datasets
-    blocking = L.geoJSON.ajax('http://localhost:8000/infrastructure/api/blocking/');
-    critical = L.geoJSON.ajax('http://localhost:8000/infrastructure/api/critical/');
-    extended = L.geoJSON.ajax('http://localhost:8000/infrastructure/api/extended/');
-    food = L.geoJSON.ajax('http://localhost:8000/infrastructure/api/food/');
-    market = L.geoJSON.ajax('http://localhost:8000/infrastructure/api/market/');
-    muddy = L.geoJSON.ajax('http://localhost:8000/infrastructure/api/muddy/');
-    bridge = L.geoJSON.ajax('http://localhost:8000/infrastructure/api/bridge/');
-    refugee = L.geoJSON.ajax('http://localhost:8000/infrastructure/api/refugee/');
-    settlement = L.geoJSON.ajax('http://localhost:8000/infrastructure/api/settlement');
-    trading = L.geoJSON.ajax('http://localhost:8000/infrastructure/api/trading/');
-    truck = L.geoJSON.ajax('http://localhost:8000/infrastructure/api/truck/');
-    assessedRoads = L.geoJSON.ajax('http://localhost:8000/roads/assessed').addTo(mymap);
-    primary = L.geoJSON.ajax('http://localhost:8000/schools/api/primary/',);
-    secondary = L.geoJSON.ajax('http://localhost:8000/schools/api/secondary/');
-    university = L.geoJSON.ajax('http://localhost:8000/schools/api/university/');
-    healthFacilities = L.geoJSON.ajax(' http://localhost:8000/health/facilities');
-    districts = L.geoJSON.ajax("http://localhost:8000/infrastructure/api/districts/").addTo(mymap);
+    var base_url = "http://localhost:8000/"
+    blocking = L.geoJSON.ajax(base_url+'infrastructure/api/blocking/');
+    critical = L.geoJSON.ajax(base_url+'infrastructure/api/critical/');
+    extended = L.geoJSON.ajax(base_url+'infrastructure/api/extended/');
+    food = L.geoJSON.ajax(base_url+'infrastructure/api/food/');
+    market = L.geoJSON.ajax(base_url+'infrastructure/api/market/');
+    muddy = L.geoJSON.ajax(base_url+'infrastructure/api/muddy/');
+    bridge = L.geoJSON.ajax(base_url+'infrastructure/api/bridge/');
+    refugee = L.geoJSON.ajax(base_url+'infrastructure/api/refugee/');
+    settlement = L.geoJSON.ajax(base_url+'infrastructure/api/settlement');
+    trading = L.geoJSON.ajax(base_url+'infrastructure/api/trading/');
+    truck = L.geoJSON.ajax(base_url+'infrastructure/api/truck/');
+    assessedRoads = L.geoJSON.ajax(base_url+'roads/assessed').addTo(mymap);
+    primary = L.geoJSON.ajax(base_url+'schools/api/primary/');
+    secondary = L.geoJSON.ajax(base_url+'schools/api/secondary/');
+    university = L.geoJSON.ajax(base_url+'schools/api/university/');
+    healthFacilities = L.geoJSON.ajax(base_url+'health/facilities',{onEachFeature:eachHealth,pointToLayer:returnHeathMarker});
+    districts = L.geoJSON.ajax(base_url+'infrastructure/api/districts/').addTo(mymap);
     
     lyrMarkerCluster =L.markerClusterGroup();
     
@@ -173,12 +176,37 @@ $(document).ready(function(){
         });
 
 
-    function returnHeathMarker(json, latlng){
-        var icnY = L.icon({iconUrl:'http://localhost:8000/static/img/health.svg', iconSize:[40,40], iconAnchor:[20,24]});
-        var att = json.properties;
-        return L.marker(latlng, {icon:facilitiesIcns});
-        };
+    
     });
+
+    function returnHeathMarker(json, latlng){
+        var att = json.properties;
+        return L.marker(latlng, {icon:healthIcn});
+        };
+
+    function eachHealth (feature, layer) {
+        var rd =  new Date(feature.properties.report_date);
+        var ad =  new Date(feature.properties.accident_date)
+        var content = "<table class='table table-striped table-bordered table-condensed'>" +
+        "</td></tr>" + "<tr><th>Id</th><td>" + feature.properties.pk + 
+        "</td></tr>" + "<tr><th>report date</th><td>" +rd  + 
+            "<tr><th>Accident Date</th><td>" +ad  + 
+            "</td></tr>" + "<tr><th>Cause</th><td>" + feature.properties.cause + 
+            "</td></tr>" + "<tr><th>Persons</th><td>" + feature.properties.persons + 
+            "</td></tr>" + "<tr><th>Victims</th><td>" + feature.properties.victims + 
+            "</td></tr>" + "<tr><th>Road</th><td>" + feature.properties.road + 
+            "</td></tr>" + "<tr><th>Category</th><td>" + feature.properties.categories + 
+            "</td></tr>" + "<tr><th>Description</th><td>" + feature.properties.description + 
+            "</td></tr>" + "<tr><th>Cars involved</th><td>" + feature.properties.cars_involved + 
+            "</td></tr>" + "<table>";
+
+            layer.on({click: function(e){
+                // mymap.addControl(rightSidebar);
+                // $('#feature-list').html(content)
+                return layer.bindPopup(content).addTo(mymap);
+              
+            }});
+        };
 
 
 
